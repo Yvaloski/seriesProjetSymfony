@@ -13,17 +13,33 @@ class MainController extends AbstractController
      *
      * @Route("/", name="home")
      */
-    public function home()
+    public function home(): Response
     {
-        return new Response("HEll NO");
+        return $this->render("main/home.html.twig");
+
     }
 
 
     /**
      * @Route("/contact",name="/contact")
      */
-    public function contact()
+    public function contact(): Response
     {
         return new Response("Page contact");
     }
+
+    /**
+     * @Route("/test",name="test")
+     */
+    public function test()
+    {
+        $colors = ['bleu','vert','rouge','violet'];
+        $today = new \DateTime();
+
+        return $this->render("main/test.html.twig",
+        [
+            'colors' => $colors,
+            'today'=> $today]);
+    }
+    
 }

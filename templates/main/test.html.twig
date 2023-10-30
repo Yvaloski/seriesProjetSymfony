@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    test
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>page test</h1>
+{# Creation d'un variable  #}
+
+    {% set firstname = "Ponpimpo" %}
+
+    <h2>Hello ! {{ firstname }}</h2>
+
+    <p>Il y a {{ colors | length }} couleurs</p>
+
+
+    <p>{{ colors|join(', ') }}</p>
+
+
+    <p>{{ today | date('d/m/y H:i') }}</p>
+
+
+
+    <ul>
+    {% for color in colors %}
+       <li>{{ color }}</li>
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+
+
+    {% endfor %}
+    </ul>
+
+    {% set book = {title:'the book', year:1999} %}
+
+    <p>{{ book.title }}</p>
+
+{% endblock %}
+
