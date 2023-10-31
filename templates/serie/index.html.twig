@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des séries - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+
+    <h1>Liste des Séries </h1>
+    <h2>A venir</h2>
+
+
+    <ul>
+        <li><a href="{{ path('serie_show', {'id': 1}) }}">Série 1</a></li>
+        <li><a href="{{ path('serie_show', {'id': 2}) }}">Série 2</a></li>
+        <li><a href="{{ path('serie_show', {'id': 3}) }}">Série 3</a></li>
+    </ul>
+{% endblock %}

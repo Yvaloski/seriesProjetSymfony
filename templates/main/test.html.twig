@@ -3,11 +3,16 @@
     test
 
 {% endblock %}
+{% block header %}
+    {{ parent() }}
+
+{% endblock %}
+
 
 {% block body %}
 
     <h1>page test</h1>
-{# Creation d'un variable  #}
+    {# Creation d'un variable  #}
 
     {% set firstname = "Ponpimpo" %}
 
@@ -19,19 +24,21 @@
     <p>{{ colors|join(', ') }}</p>
 
 
+    {{ dump(colors) }}
+
     <p>{{ today | date('d/m/y H:i') }}</p>
 
 
 
     <ul>
-    {% for color in colors %}
-       <li>{{ color }}</li>
-        {% if not loop.last %}
-            <hr>
-        {% endif %}
+        {% for color in colors %}
+            <li>{{ color }}</li>
+            {% if not loop.last %}
+                <hr>
+            {% endif %}
 
 
-    {% endfor %}
+        {% endfor %}
     </ul>
 
     {% set book = {title:'the book', year:1999} %}

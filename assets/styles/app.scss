@@ -1,0 +1,34 @@
+body {
+    background: rgb(59,43,113);
+    background: linear-gradient(6deg, rgba(59,43,113,1) 0%, rgba(0,0,0,1) 86%);
+    color: whitesmoke ;
+
+    font-family: 'Comfortaa', sans-serif;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    min-height: 100vh;
+
+}
+.container{
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    margin: 20px;
+    flex-grow: 1;
+    width: 100%;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#343a40;
+    color:whitesmoke;
+    height: 80px;
+}
+header img{
+    width: 120px;
+
+}
