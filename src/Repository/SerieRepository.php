@@ -39,6 +39,28 @@ class SerieRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Rechercher les meilleures séries en bdd
+     * @return Serie[]
+     */
+    public function findBest():array
+    {
+        $em = $this->getEntityManager();
+
+        $dql = "
+        SELECT s 
+        FROM App\Entity\Serie s 
+        where  s.popularity > 100
+        AND s.vote > 8 
+        order by s.popularity DESC 
+        ";
+        $query = $em->createQuery($dql);
+        $query->setMaxResults(30);
+        $result = $query->getResult();
+
+        return $result;
+
+    }
 //    /**
 //     * @return Serie[] Returns an array of Serie objects
 //     */

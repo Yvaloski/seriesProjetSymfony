@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail série - {{ parent() }}{% endblock %}
+{% block title %}{{ serie.name}} - {{ parent() }}{% endblock %}
 
 {% block body %}
+    
+    <img src="{{ asset('img/backdrops/' ~ serie.backdrop) }}" width="500px">
+    <h1>{{ serie.name}} </h1>
+    <p>{{ serie.vote }}</p>
+    <p>{{ serie.overview }}</p>
 
-
-    <h1>Détail de la Série n°{{ id }} </h1>
-    <h2>A venir</h2>
 {% endblock %}

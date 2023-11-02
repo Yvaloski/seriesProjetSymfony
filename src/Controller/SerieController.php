@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Serie;
+use App\Repository\SerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,35 +18,46 @@ class SerieController extends AbstractController
     /**
      * @Route("/", name="serie_index")
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(SerieRepository $serieRepository): Response
     {
-        //TODO: Récuperation de la liste des séries en bdd
+        // Récuperation de la liste des séries en bdd
 
+        //$series = $serieRepository->findBy([],['popularity'=>'DESC', 'vote' =>'DESC'], 30);
+        $series = $serieRepository->findBest();
 
-        return $this->render('serie/index.html.twig');
+        return $this->render('serie/index.html.twig', [
+            'series' => $series
+        ]);
     }
 
     /**
      * @Route("/new", name="serie_new")
      */
-    public function new():Response
+    public function new(): Response
     {
+
         return $this->render('serie/new.html.twig');
     }
 
     /**
      * @Route("/{id}", name="serie_show", requirements={"id"="\d+"})
      */
-    public function show(int $id):Response
+    public function show(SerieRepository $serieRepository, int $id): Response
     {
-        //TODO: Récupérer la serie correspondante a $id
-        return $this->render('serie/show.html.twig',[
-            'id'=>$id
+
+        //Récupérer la serie correspondante a $id
+
+        $serie = $serieRepository->find($id);
+
+        if ($serie == null) {
+            throw $this->createNotFoundException("Cette série n'existe pas ");
+        }
+
+        return $this->render('serie/show.html.twig', [
+            'serie' => $serie
 
         ]);
     }
-
-
 
 
 }

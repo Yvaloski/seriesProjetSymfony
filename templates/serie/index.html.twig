@@ -6,12 +6,15 @@
 
 
     <h1>Liste des Séries </h1>
-    <h2>A venir</h2>
 
+    <section class="series">
+        {% for serie in series %}
+            <div class="">
+                <a href="{{ path('serie_show', {'id':serie.id}) }}">
+                <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"  onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
 
-    <ul>
-        <li><a href="{{ path('serie_show', {'id': 1}) }}">Série 1</a></li>
-        <li><a href="{{ path('serie_show', {'id': 2}) }}">Série 2</a></li>
-        <li><a href="{{ path('serie_show', {'id': 3}) }}">Série 3</a></li>
-    </ul>
+            </div>
+
+        {% endfor %}
+    </section>
 {% endblock %}

@@ -1,8 +1,7 @@
 body {
     background: rgb(59,43,113);
     background: linear-gradient(6deg, rgba(59,43,113,1) 0%, rgba(0,0,0,1) 86%);
-    color: whitesmoke ;
-
+    color:  whitesmoke !important;
     font-family: 'Comfortaa', sans-serif;
     display: flex;
     flex-direction: column;
@@ -29,5 +28,11 @@ footer {
 }
 header img{
     width: 120px;
+
+}
+.series{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(140px, 1fr));
+    gap:1rem;
 
 }
