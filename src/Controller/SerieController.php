@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,9 +16,10 @@ class SerieController extends AbstractController
     /**
      * @Route("/", name="serie_index")
      */
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
         //TODO: Récuperation de la liste des séries en bdd
+
 
         return $this->render('serie/index.html.twig');
     }
