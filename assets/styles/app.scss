@@ -10,6 +10,9 @@ body {
     min-height: 100vh;
 
 }
+h1, h2, h3, h4, h5, h6 {
+    color: whitesmoke;
+}
 .container{
     align-self: center;
     justify-content: center;
@@ -35,4 +38,11 @@ header img{
     grid-template-columns: repeat(auto-fill,minmax(140px, 1fr));
     gap:1rem;
 
+}
+
+.serie{
+    transition: all .2s ease-in-out;
+}
+.serie:hover{
+ transform: scale(1.1);
 }

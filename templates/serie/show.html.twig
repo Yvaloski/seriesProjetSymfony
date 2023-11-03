@@ -4,8 +4,8 @@
 
 {% block body %}
     
-    <img src="{{ asset('img/backdrops/' ~ serie.backdrop) }}" width="500px">
-    <h1>{{ serie.name}} </h1>
+    <img src="{{ asset('img/backdrops/' ~ serie.backdrop) }}" >
+    <h1 class=".text-primary">{{ serie.name}} </h1>
     <p>{{ serie.vote }}</p>
     <p>{{ serie.overview }}</p>
 

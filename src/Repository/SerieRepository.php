@@ -45,6 +45,8 @@ class SerieRepository extends ServiceEntityRepository
      */
     public function findBest():array
     {
+        //Version DQL
+        /**
         $em = $this->getEntityManager();
 
         $dql = "
@@ -57,7 +59,17 @@ class SerieRepository extends ServiceEntityRepository
         $query = $em->createQuery($dql);
         $query->setMaxResults(30);
         $result = $query->getResult();
+        */
+        //Version QueryBuilder
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.popularity > 100')
+            ->andWhere('s.vote > 8')
+            ->orderBy('s.popularity', 'DESC');
 
+
+        $query = $qb->getQuery();
+        $query->setMaxResults(30);
+        $result = $query->getResult();
         return $result;
 
     }
