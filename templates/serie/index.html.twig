@@ -10,7 +10,7 @@
     <section class="series">
         {% for serie in series %}
             <div class="serie">
-                <a href="{{ path('serie_show', {'id':serie.id}) }}">
+                <a href="{{ path('serie_show', {'id':serie.id}) }}" title="nombre de saisons | {{ serie.seasons|length }}">
                 <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"  onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
 
             </div>

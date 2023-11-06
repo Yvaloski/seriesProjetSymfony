@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Serie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -41,9 +42,9 @@ class SerieRepository extends ServiceEntityRepository
 
     /**
      * Rechercher les meilleures séries en bdd
-     * @return Serie[]
+     * @return Paginator
      */
-    public function findBest():array
+    public function findBest():Paginator
     {
         //Version DQL
         /**
@@ -61,7 +62,9 @@ class SerieRepository extends ServiceEntityRepository
         $result = $query->getResult();
         */
         //Version QueryBuilder
-        $qb = $this->createQueryBuilder('s')
+        $qb = $this->createQueryBuilder('s');
+        $qb->leftJoin('s.seasons', 'seasons')
+            ->addSelect('seasons')
             ->where('s.popularity > 100')
             ->andWhere('s.vote > 8')
             ->orderBy('s.popularity', 'DESC');
@@ -69,7 +72,7 @@ class SerieRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery();
         $query->setMaxResults(30);
-        $result = $query->getResult();
+        $result = new Paginator($query);
         return $result;
 
     }

@@ -5,8 +5,19 @@
 {% block body %}
     
     <img src="{{ asset('img/backdrops/' ~ serie.backdrop) }}" >
+    
     <h1 class=".text-primary">{{ serie.name}} </h1>
     <p>{{ serie.vote }}</p>
     <p>{{ serie.overview }}</p>
 
+    <section class="season">
+        {% for season  in serie.seasons %}
+            <div class="season">
+
+                    <img class="card-img-top" src="{{ asset('img/posters/seasons/' ~ season.poster) }}"  onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
+
+            </div>
+
+        {% endfor %}
+    </section>
 {% endblock %}
