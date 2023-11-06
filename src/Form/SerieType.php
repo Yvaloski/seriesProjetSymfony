@@ -5,6 +5,9 @@ namespace App\Form;
 use App\Entity\Serie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,18 +26,29 @@ class SerieType extends AbstractType
                     'Cancelled' => 'Cancelled',
                     'Ended' => 'Ended',
                     'Returning'=>'Returning'
-                ]
+                ],
+                'multiple' => false,
+                'expanded' =>false
             ])
-            ->add('vote')
-            ->add('popularity')
+            ->add('vote', NumberType::class,[
+                'html5'=>true
+            ])
+            ->add('popularity', NumberType::class, [
+                'html5'=>true
+            ])
             ->add('genres')
-            ->add('firstAirDate')
-            ->add('lastAirDate')
+            ->add('firstAirDate', DateType::class, [
+                'html5'=>true,
+                'widget'=>'single_text'
+            ])
+            ->add('lastAirDate', DateType::class, [
+                'html5'=>true,
+                'widget'=>'single_text'
+            ])
             ->add('backdrop')
             ->add('poster')
             ->add('tmdbId')
-            ->add('dateCreated')
-            ->add('dateModified')
+            //->add('valider', SubmitType::class)
         ;
     }
 

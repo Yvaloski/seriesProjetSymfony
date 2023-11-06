@@ -15,7 +15,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .container{
     align-self: center;
-    justify-content: center;
     flex-direction: column;
     display: flex;
     margin: 20px;
@@ -45,4 +44,9 @@ header img{
 }
 .serie:hover{
  transform: scale(1.1);
+}
+
+form{
+
+    width: 50%;
 }
