@@ -9,7 +9,6 @@
     <h1 class=".text-primary">{{ serie.name}} </h1>
     <p>{{ serie.vote }}</p>
     <p>{{ serie.overview }}</p>
-
     <section class="season">
         {% for season  in serie.seasons %}
             <div class="season">
@@ -20,4 +19,6 @@
 
         {% endfor %}
     </section>
+    <a type="button" class="btn btn-secondary" href="{{ path('serie_delete', {'id': serie.id}) }}">Delete</a>
+
 {% endblock %}

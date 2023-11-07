@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\Season;
 use App\Entity\Serie;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,7 +26,11 @@ class SeasonType extends AbstractType
             ->add('tmdbId')
             ->add('serie', EntityType::class, [
                 'class'=>Serie::class,
-                'choice_label'=>'name'
+                'choice_label'=>'name',
+                'query_builder'=> function(EntityRepository  $er): QueryBuilder{
+                return  $er->createQueryBuilder('s')
+                    ->addOrderBy('s.name', 'ASC');
+                }
             ])
         ;
     }

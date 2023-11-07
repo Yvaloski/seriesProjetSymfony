@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 20px;
     flex-grow: 1;
     width: 100%;
+    gap: 100px;
 }
 footer {
     display: flex;
@@ -55,4 +56,53 @@ form{
     grid-template-columns: repeat(auto-fill,minmax(140px, 1fr));
     gap:1rem;
 
+}
+
+.carousel {
+
+    align-self: center;
+    width: 60%;
+    height: 500px;
+
+}
+.carousel-cell {
+    width: 33%;
+    height: 500px;
+    margin-right: 10px;
+}
+/* position dots up a bit */
+.flickity-page-dots {
+    display: none;
+}
+.flickity-prev-next-button{
+    transform: translateY(-150%);
+}
+.flickity-prev-next-button.next{
+    right: -100px;
+}
+.flickity-prev-next-button.previous{
+    left: -100px;
+}
+.carousel-cell img {
+    display: block;
+    border-radius: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    /* dim unselected */
+    opacity: 0.7;
+    -webkit-transform: scale(0.85);
+    transform: scale(0.85);
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s, transform 0.3s, -webkit-filter 0.3s, filter 0.3s;
+    transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+}
+
+/* brighten selected image */
+.carousel-cell.is-selected img {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-filter: none;
+    filter: none;
 }

@@ -3,4 +3,14 @@
  {%  block body %}
  <h1>Mes séries</h1>
 
+  <p>
+   Hello
+   {% if app.user %}
+    {{ app.user.fullName  }}
+
+    {% else %}
+    Foreigner
+   {% endif %}
+
+  </p>
 {% endblock %}

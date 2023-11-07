@@ -5,16 +5,40 @@
 {% block body %}
 
 
-    <h1>Liste des Séries </h1>
+<h1>Liste des Séries </h1>
 
+<div class="carousel"  data-flickity='{ "imagesLoaded": true, "percentPosition": false, "wrapAround": true, "autoPlay": true }'>
+    {% for serie in series %}
+        <div class="carousel-cell">
+        <a href="{{ path('serie_show', {'id':serie.id}) }}"
+           title="nombre de saisons | {{ serie.seasons|length }}">
+            <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"
+                 onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
+        </div>
+    {% endfor %}
+
+</div>
     <section class="series">
         {% for serie in series %}
             <div class="serie">
-                <a href="{{ path('serie_show', {'id':serie.id}) }}" title="nombre de saisons | {{ serie.seasons|length }}">
-                <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"  onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
+                <a href="{{ path('serie_show', {'id':serie.id}) }}"
+                   title="nombre de saisons | {{ serie.seasons|length }}">
+                    <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"
+                         onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
 
             </div>
 
         {% endfor %}
     </section>
-{% endblock %}
+    <script>// external js: flickity.pkgd.js
+
+        var flkty = new Flickity( '.carousel', {
+            imagesLoaded: true,
+            percentPosition: false
+        });
+
+        var caption = document.querySelector('.caption');
+
+
+    </script>
+    {% endblock %}

@@ -20,5 +20,10 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "flickity": "^3.0.0",
+        "flickity-fullscreen": "^2.0.0",
+        "flickity-imagesloaded": "^2.0.0"
     }
 }
