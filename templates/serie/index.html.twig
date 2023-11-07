@@ -5,34 +5,44 @@
 {% block body %}
 
 
-<h1>Liste des Séries </h1>
+    <div class="hero">
+        <h1>Welcome to Series dot com</h1>
+        <h2>TOP 10</h2>
 
-<div class="carousel"  data-flickity='{ "imagesLoaded": true, "percentPosition": false, "wrapAround": true, "autoPlay": true }'>
-    {% for serie in series %}
-        <div class="carousel-cell">
-        <a href="{{ path('serie_show', {'id':serie.id}) }}"
-           title="nombre de saisons | {{ serie.seasons|length }}">
-            <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"
-                 onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
+        <div class="carousel"
+             data-flickity='{ "imagesLoaded": true, "percentPosition": false, "wrapAround": true, "autoPlay": true }'>
+
+            {% for serie in series %}
+
+                <div class="carousel-cell">
+                    <a href="{{ path('serie_show', {'id':serie.id}) }}"
+                       title="nombre de saisons | {{ serie.seasons|length }}">
+                        <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"
+                             onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
+                </div>
+            {% endfor %}
+
         </div>
-    {% endfor %}
+    </div>
+    <div class="liste">
+        <h2>The best notes</h2>
+        <div class="series">
 
-</div>
-    <section class="series">
-        {% for serie in series %}
-            <div class="serie">
-                <a href="{{ path('serie_show', {'id':serie.id}) }}"
-                   title="nombre de saisons | {{ serie.seasons|length }}">
-                    <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"
-                         onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
+            {% for serie in series %}
+                <div class="serie">
+                    <a href="{{ path('serie_show', {'id':serie.id}) }}"
+                       title="nombre de saisons | {{ serie.seasons|length }}">
+                        <img class="card-img-top" src="{{ asset('img/posters/series/' ~ serie.backdrop) }}"
+                             onerror="this.src='https://placehold.co/342x513'" alt="Card image cap"> </a>
 
-            </div>
+                </div>
 
-        {% endfor %}
-    </section>
+            {% endfor %}
+        </div>
+    </div>
     <script>// external js: flickity.pkgd.js
 
-        var flkty = new Flickity( '.carousel', {
+        var flkty = new Flickity('.carousel', {
             imagesLoaded: true,
             percentPosition: false
         });
@@ -41,4 +51,4 @@
 
 
     </script>
-    {% endblock %}
+{% endblock %}
