@@ -12,6 +12,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
     color: whitesmoke;
+    margin-top: 10px;
 }
 .container{
     align-self: center;
@@ -32,6 +33,21 @@ footer {
 header img{
     width: 120px;
 
+}
+.hero{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.liste{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    width: 100%;
 }
 .series{
     display: grid;
@@ -60,6 +76,7 @@ form{
 
 .carousel {
 
+    margin-top: 30px;
     align-self: center;
     width: 60%;
     height: 500px;
