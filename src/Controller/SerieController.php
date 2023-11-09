@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Serie;
 use App\Form\SerieType;
 use App\Repository\SerieRepository;
+use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,7 +39,7 @@ class SerieController extends AbstractController
      * @Route("/new", name="serie_new")
      * @IsGranted("ROLE_USER")
      */
-    public function new(Request $request, EntityManagerInterface $manager): Response
+    public function new(Request $request, EntityManagerInterface $manager,FileUploader $uploader): Response
     {
         $serie = new Serie();
         $serie->setDateCreated(new \DateTime());
@@ -45,6 +47,21 @@ class SerieController extends AbstractController
 
        $serieForm->handleRequest($request);
        if ($serieForm->isSubmitted() && $serieForm->isValid()){
+
+           /** @var UploadedFile $posterFile */
+           $posterFile = $serieForm->get('posterFile')->getData();
+           if ($posterFile) {
+               $posterFileName= $uploader->upload($posterFile, $this->getParameter('series_posters_directory'));
+               $serie->setPoster($posterFileName);
+           }
+           /** @var UploadedFile $backdropFile */
+           $backdropFile = $serieForm->get('backdropFile')->getData();
+           if ($backdropFile) {
+               $backdropFileName= $uploader->upload($backdropFile, $this->getParameter('series_backdrops_directory'));
+               $serie->setBackdrop($backdropFileName);
+           }
+
+
 
            $manager->persist($serie);
            $manager->flush();

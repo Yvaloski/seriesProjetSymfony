@@ -6,6 +6,7 @@ use App\Entity\Serie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -45,8 +46,12 @@ class SerieType extends AbstractType
                 'html5'=>true,
                 'widget'=>'single_text'
             ])
-            ->add('backdrop')
-            ->add('poster')
+            ->add('backdropFile', FileType::class, [
+                'mapped'=>false
+            ])
+            ->add('posterFile', FileType::class, [
+                'mapped'=>false
+            ])
             ->add('tmdbId')
             //->add('valider', SubmitType::class)
         ;

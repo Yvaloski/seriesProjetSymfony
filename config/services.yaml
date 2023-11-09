@@ -4,6 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    series_posters_directory: '%kernel.project_dir%/public/img/posters/series'
+    series_backdrops_directory: '%kernel.project_dir%/public/img/backdrops'
+    seasons_posters_directory: '%kernel.project_dir%/public/img/posters/seasons'
+
 
 services:
     # default configuration for services in *this* file
